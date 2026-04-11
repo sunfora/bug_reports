@@ -1,0 +1,93 @@
+<!doctype html>
+<head>
+</head>
+<body>
+
+  <div id="preload"> 
+    <p> preloaded: </p>
+    <canvas id="loaded"> </canvas>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let loaded = document.querySelector("#loaded");
+      
+      function isEmpty(canvas, ctx) {
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixelData = imageData.data;
+        for (let i = 3; i < pixelData.length; i += 4) {
+          if (pixelData[i] !== 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function start_game(canvas) {
+        let ctx = canvas.getContext("2d");
+        let was_drawn = false;
+        function loop () {
+          if (!was_drawn) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // when run on Linux, Firefox 144
+            // assert is not hit, meaning the bitmap is clear
+            console.assert(isEmpty(canvas, ctx), "must be empty after ctx.clearRect(0, 0, w, h)")
+
+            const square_size = canvas.width / 4;
+            const square_center_x = canvas.width / 2;
+            const square_center_y = canvas.height / 2;
+            const square_x = square_center_x - square_size / 2;
+            const square_y = square_center_y - square_size / 2;
+
+            ctx.fillStyle = 'black'
+            ctx.fillRect(square_x, square_y, square_size, square_size);
+            
+            // when run on Linux, Firefox 144
+            // assert is not hit, meaning the bitmap has black pixels
+            // in it
+            console.assert(!isEmpty(canvas, ctx), "must not be empty after ctx.fillRect(...)")
+
+            // commenting this boolean out makes it eventually draw something
+            // 
+            // also image is shown correctly the first time
+            // when the code is stepped through in the firefox debugger
+            //
+            // square will be drawn
+            was_drawn = true;
+          } else {
+            // when run on Linux, Firefox 144
+            // assert is not hit, meaning the bitmap has black pixels
+            console.assert(!isEmpty(canvas, ctx), "must not be empty after ctx.fillRect(...)")
+          }
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+      }
+      start_game(loaded);
+    });
+
+    // NOTE: since bitmap asserts are correct
+    //       I tried several methods to force browser 
+    //       
+    //       to redraw the canvas element itself
+    //       but no result
+    //       
+    //       in my original game code where I have spotted the bug
+    //       I relied on <canvas> as my offscreens
+    //       essentially storing there cached textures
+    // 
+    //       I was creating my offscreen canvases by somewhat 'legacy way'
+    //       : via document.createElement('canvas')
+    //       
+    //       basically when I used screen.ctx.drawImage(offscreen, ...)
+    //       nothing was drawn on my actual game canvas
+    // 
+    //       after I changed my offscreens from HTMLCanvasElement to OffscreenCanvases
+    //       the problem was essentially fixed for me because I run everything immediate mode
+    //       60fps so I don't care if some frames are dropped 
+    //       
+    //       but it is certainly not the expected behaviour
+    //       and shouldn't work that way
+  </script>
+</body>
