@@ -237,7 +237,11 @@ None found yet.
 I have searched for bugs mentioning `,trace`, `trace` with combination of `interrupt` here.  
 Found nothing obviously matching or directly relevant.
 
-- https://debbugs.gnu.org/db/pa/lguile.html
-- https://codeberg.org/guile/guile/issues
+- [https://debbugs.gnu.org/db/pa/lguile.html](https://debbugs.gnu.org/db/pa/lguile.html)
+- [https://codeberg.org/guile/guile/issues](https://codeberg.org/guile/guile/issues)
 
 submitted via a letter to a bug-guile@gnu.org
+
+- [https://issues.guix.gnu.org/81117](https://issues.guix.gnu.org/81117)
+- [https://debbugs.gnu.org/cgi/bugreport.cgi?bug=81117](https://debbugs.gnu.org/cgi/bugreport.cgi?bug=81117)
+

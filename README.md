@@ -10,6 +10,7 @@ Minutes of debugging spent only to find out it is gone... Mysterious.
 
 **Would work on it:**
 * [deno doc --json does not parse types with brackets](work/deno_doc_ts_types/README.md)
+* [guix with glfw messes with x11 cursor](work/guix_glfw_cursors/README.md)
 
 **Mysterious:**
 * [firefox canvas glitch](void/firefox_canvas/README.md)
