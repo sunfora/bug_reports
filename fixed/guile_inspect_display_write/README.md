@@ -29,6 +29,7 @@ scheme@(guile-user)> ,i '(1 (((2)) (3)) 4
 ```
 
 ## Status
-I am waiting it to be merged
+~~I am waiting it to be merged~~
+I have fixed the bug.
 
 codeberg: [https://codeberg.org/guile/guile/pulls/221](https://codeberg.org/guile/guile/pulls/221)
