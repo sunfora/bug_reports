@@ -11,6 +11,9 @@ Minutes of debugging spent only to find out it is gone... Mysterious.
 **Would work on it:**
 * [deno doc --json does not parse types with brackets](work/deno_doc_ts_types/README.md)
 * [guix with glfw messes with x11 cursor](work/guix_glfw_cursors/README.md)
+* [gdb unintuitive scrolling ux](work/gdb_tui_lay_asm_ux/README.md)
+* [guix no pdf generation in nasm, broken tests](work/guix_nasm-next/README.md)
+* [guix/import/github.scm: package-latest-release returns bogus erified version tag](work/guix_upstream_bogus/README.md)
 
 **Mysterious:**
 * [firefox canvas glitch](void/firefox_canvas/README.md)
